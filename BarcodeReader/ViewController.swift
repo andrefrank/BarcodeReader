@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         previewView.layer.cornerRadius = 10
         resultView.layer.cornerRadius = 10
         resultView.textContainerInset = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 8)
-        
+        resultView.isEditable = false
         
         scanner = BarcodeScanner(completion: handleCode(code:), queue: DispatchQueue.main, previewIn: previewView)
         
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        //scanner?.updateOrientation()
+        scanner?.updateOrientation()
     }
     
     func handleCode(code:String)->Void{
