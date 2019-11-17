@@ -99,6 +99,7 @@ class BarcodeScanner: NSObject {
         return captureSession
     }
     
+    /// The currently supported barcodes
     private func metaObjectTypes() -> [AVMetadataObject.ObjectType] {
         return [
             .code128,
@@ -110,13 +111,16 @@ class BarcodeScanner: NSObject {
             .interleaved2of5,
             .code93,
             .ean13,
-            .upce
+            .upce,
+            .aztec,
+            .itf14,
+            .pdf417
         ]
     }
     
+    /// The preview layer
     private func createPreviewLayer(withSession captureSession: AVCaptureSession, view: UIView) -> AVCaptureVideoPreviewLayer {
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        // previewLayer.frame = view.bounds.insetBy(dx: 2,dy: 5)
         previewLayer.videoGravity = .resizeAspectFill
         
         return previewLayer
@@ -155,20 +159,28 @@ extension BarcodeScanner: AVCaptureMetadataOutputObjectsDelegate {
     }
 }
 
+//MARK:- Interface methods
 extension BarcodeScanner {
+    /// Since device rotation this method should be called in 'layoutSubViews' to update the preview layer
+    /// according the new device orientation
     private func updatePreviewLayer(layer: AVCaptureConnection, orientation: AVCaptureVideoOrientation) {
         layer.videoOrientation = orientation
         
-        guard let previewLayer = self.previewView.layer.sublayers?.first as? AVCaptureVideoPreviewLayer else {
-            return }
+        ///Preview layer should be the first sublayer in the chain tolet this work
+        guard let previewLayer = self.previewView.layer.sublayers?.first(where: {$0 is AVCaptureVideoPreviewLayer}) as? AVCaptureVideoPreviewLayer else {return}
         
-        previewLayer.cornerRadius = 10
+        /// Make the preview layer little smaller for scan feedback
         previewLayer.frame = previewView.bounds.insetBy(dx: 2, dy: 2)
+        previewLayer.cornerRadius = 10
     }
     
+    ///Change camera vs. layer orientation
     func updateOrientation() {
-        guard let previewLayer = self.previewView.layer.sublayers?.first as? AVCaptureVideoPreviewLayer else {
-            return }
+        guard let previewLayer = self.previewView.layer.sublayers?.first(where: {$0 is AVCaptureVideoPreviewLayer}) as? AVCaptureVideoPreviewLayer else {
+            return
+        }
+        
+        
         
         if let connection = previewLayer.connection {
             let currentDevice: UIDevice = UIDevice.current
@@ -204,6 +216,7 @@ extension BarcodeScanner {
     }
 }
 
+//MARK: - Sound Feedback for successful scan
 extension BarcodeScanner {
     func createAudioPlayer() -> AVAudioPlayer? {
         guard let url = Bundle.main.url(forResource: "beep", withExtension: "mp3") else { return nil}

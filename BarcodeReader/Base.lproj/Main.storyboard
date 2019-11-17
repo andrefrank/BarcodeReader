@@ -75,7 +75,7 @@
                                     <constraint firstAttribute="height" constant="65" id="tBq-Fp-qaW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Start scanning">
+                                <state key="normal" title="Start scan">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <connections>
@@ -149,6 +149,7 @@
                     <connections>
                         <outlet property="previewView" destination="FFF-Lc-HOl" id="iyF-zT-ZdS"/>
                         <outlet property="resultView" destination="sBr-UU-pf1" id="IWZ-QP-yYT"/>
+                        <outlet property="scanToggleButton" destination="RL1-Ua-WfU" id="WYC-x7-nRP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
