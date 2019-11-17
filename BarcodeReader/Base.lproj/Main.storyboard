@@ -1,24 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h1p-sf-ua4">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Barcode Scanner-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BarcodeReader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RL1-Ua-WfU">
+                                <rect key="frame" x="132" y="256" width="111" height="33"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Start scanning">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="startScanButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zlP-lo-Lld"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFF-Lc-HOl">
+                                <rect key="frame" x="87.5" y="96" width="200" height="150"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Zno-nb-8IM"/>
+                                    <constraint firstAttribute="width" constant="372" id="c2c-dY-Nac"/>
+                                    <constraint firstAttribute="height" constant="150" id="oQP-Cc-29X"/>
+                                    <constraint firstAttribute="height" constant="150" id="rL8-4H-kdS"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="c2c-dY-Nac"/>
+                                        <exclude reference="oQP-Cc-29X"/>
+                                        <exclude reference="rL8-4H-kdS"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Zno-nb-8IM"/>
+                                        <include reference="rL8-4H-kdS"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="c2c-dY-Nac"/>
+                                        <include reference="oQP-Cc-29X"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="oQP-Cc-29X"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sBr-UU-pf1">
+                                <rect key="frame" x="81" y="299" width="213" height="128"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="213" id="3qd-8P-47x"/>
+                                    <constraint firstAttribute="height" constant="128" id="NwF-Gc-WaW"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="FFF-Lc-HOl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="1dl-F3-YAG"/>
+                            <constraint firstItem="FFF-Lc-HOl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ELZ-bN-fQB"/>
+                            <constraint firstItem="FFF-Lc-HOl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OY4-Eh-LM8"/>
+                            <constraint firstItem="sBr-UU-pf1" firstAttribute="top" secondItem="RL1-Ua-WfU" secondAttribute="bottom" constant="10" id="SBF-oP-wVr"/>
+                            <constraint firstItem="sBr-UU-pf1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vqh-Hn-9rQ"/>
+                            <constraint firstItem="FFF-Lc-HOl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Wan-8V-dkg"/>
+                            <constraint firstItem="FFF-Lc-HOl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hU9-SN-p4l"/>
+                            <constraint firstItem="RL1-Ua-WfU" firstAttribute="top" secondItem="FFF-Lc-HOl" secondAttribute="bottom" constant="10" id="maa-I1-kGK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FFF-Lc-HOl" secondAttribute="trailing" constant="20" id="vbg-xa-cVw"/>
+                            <constraint firstItem="RL1-Ua-WfU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="y4X-AH-qwl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="vbg-xa-cVw"/>
+                                <exclude reference="1dl-F3-YAG"/>
+                                <exclude reference="ELZ-bN-fQB"/>
+                                <exclude reference="hU9-SN-p4l"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="hU9-SN-p4l"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="ELZ-bN-fQB"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="vbg-xa-cVw"/>
+                                <exclude reference="1dl-F3-YAG"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Barcode Scanner" id="ael-Jc-Imk"/>
+                    <connections>
+                        <outlet property="previewView" destination="FFF-Lc-HOl" id="iyF-zT-ZdS"/>
+                        <outlet property="resultView" destination="sBr-UU-pf1" id="IWZ-QP-yYT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1069.5999999999999" y="128.18590704647679"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wZJ-sG-VeJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h1p-sf-ua4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="cZJ-85-QPM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="1fc-yg-4E1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kqX-uH-1JJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.40000000000001" y="128.18590704647679"/>
         </scene>
     </scenes>
 </document>
