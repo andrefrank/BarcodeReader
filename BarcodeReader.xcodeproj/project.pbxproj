@@ -41,6 +41,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		673D5CFA2381DEBE00A474AB /* API */ = {
+			isa = PBXGroup;
+			children = (
+				673F58B52380AE6E0039DCED /* BarcodeScanner.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		673D5CFB2381DEDC00A474AB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				673F58A52380AE2D0039DCED /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		673D5CFC2381DEEC00A474AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		673D5CFD2381DF1900A474AB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				673F58AC2380AE2E0039DCED /* LaunchScreen.storyboard */,
+				673F58A72380AE2D0039DCED /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		673D5CFE2381DF4100A474AB /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				6769CB392381447D00903C59 /* beep.mp3 */,
+			);
+			path = Ressources;
+			sourceTree = "<group>";
+		};
 		673F58952380AE2D0039DCED = {
 			isa = PBXGroup;
 			children = (
@@ -60,14 +100,14 @@
 		673F58A02380AE2D0039DCED /* BarcodeReader */ = {
 			isa = PBXGroup;
 			children = (
-				673F58B52380AE6E0039DCED /* BarcodeScanner.swift */,
+				673D5CFA2381DEBE00A474AB /* API */,
+				673D5CFC2381DEEC00A474AB /* Views */,
+				673D5CFB2381DEDC00A474AB /* ViewController */,
+				673D5CFD2381DF1900A474AB /* Storyboards */,
+				673D5CFE2381DF4100A474AB /* Ressources */,
 				673F58A12380AE2D0039DCED /* AppDelegate.swift */,
 				673F58A32380AE2D0039DCED /* SceneDelegate.swift */,
-				673F58A52380AE2D0039DCED /* ViewController.swift */,
-				673F58A72380AE2D0039DCED /* Main.storyboard */,
 				673F58AA2380AE2E0039DCED /* Assets.xcassets */,
-				6769CB392381447D00903C59 /* beep.mp3 */,
-				673F58AC2380AE2E0039DCED /* LaunchScreen.storyboard */,
 				673F58AF2380AE2E0039DCED /* Info.plist */,
 			);
 			path = BarcodeReader;
