@@ -142,16 +142,21 @@ extension BarcodeScanner: AVCaptureMetadataOutputObjectsDelegate {
                 //Release Metadata object before retaining it will prevent memory leaks
                 previousCodes = nil
                 
-                playBeep()
-                outputHandler(newCode)
+                    playBeep()
+                    outputHandler(newCode)
+                
                 //This code retains the MetadataObject containing the stringValue
                 previousCodes = newCode
                 
             } else {
                  //Release Metadata object before retaining it will prevent memory leaks
                 previousCodes = nil
-                playBeep()
-                outputHandler(newCode)
+               
+                
+                    self.playBeep()
+                    self.outputHandler(newCode)
+            
+
                 //This code retains the Metadata objectcontaining the stringValue
                 previousCodes = newCode
             }
